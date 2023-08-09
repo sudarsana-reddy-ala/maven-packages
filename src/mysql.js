@@ -1,7 +1,11 @@
 import mysql from 'mysql2/promise';
 
-const connection = await mysql.createConnection(process.env.DATABASE_URL);
+export default async function getUsers(data) {
 
-txtUserId = getRequestString("UserId");
-query = "SELECT * FROM Users WHERE UserId = " + txtUserId;
-const [rows] = await connection.query(query);
+    const connection = await mysql.createConnection(process.env.DATABASE_URL);
+    txtUserId = getRequestString("UserId");
+    const query = `SELECT * FROM health_records WHERE id = (${data.id})`;
+    const [rows] = await connection.query(query);
+    return rows;
+}
+
