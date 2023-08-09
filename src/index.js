@@ -11,3 +11,5 @@ async function testSqlInjection(){
     console.log(data);
 }
 
+testSqlInjection();
+
