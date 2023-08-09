@@ -1,16 +1,20 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-  const name = req.query.name;
-  res.send(`<h1>Hello, ${name}</h1>`);
+const users = [
+  { id: 1, name: "John Doe" },
+  { id: 2, name: "Jane Doe" },
+];
+
+app.get("/user/:id", function (req, res) {
+  let user = users.find((user) => user.id == req.params.id);
+
+  if (!user) {
+    res.status(404).send("User not found");
+    return;
+  }
+
+  res.send(user);
 });
 
-app.get("/hello", (req, res) => {
-    // Do a resource-intensive operation
-    while (true) {}
-  });
-
-app.listen(3000, () => {
-  console.log("Example app listening on port 3000!");
-});
+app.listen(3000);
