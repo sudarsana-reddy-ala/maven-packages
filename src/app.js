@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-app.get("/secret", (req, res) => {
-  res.send("This is a secret page!");
+app.get("/", (req, res) => {
+  res.send(`<h1>Hi ${req.body.username}</h1>`);
 });
 
 app.listen(3000, () => {
