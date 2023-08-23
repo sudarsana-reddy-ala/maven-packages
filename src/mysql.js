@@ -10,6 +10,13 @@ class MySqlUtil {
         const [rows] = await connection.query(query);
         return rows;
     }
+
+    async insecurePassword() {
+        // BAD: the random suffix is not cryptographically secure
+        var suffix = Math.random();
+        var password = "myPassword" + suffix;
+        return password;
+    }
 }
 
 module.exports = { MySqlUtil }
