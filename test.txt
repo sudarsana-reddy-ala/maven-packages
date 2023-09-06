@@ -1,1 +1,2 @@
 A test file for testing paths-ignore in github actions
+added 2nd line
